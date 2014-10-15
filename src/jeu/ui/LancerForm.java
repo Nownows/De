@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package jeude.ui;
+package jeu.ui;
 
-import jeude.controller.Gestion;
+import jeu.core.Partie;
 
 /**
  *
@@ -14,12 +14,12 @@ import jeude.controller.Gestion;
  */
 public class LancerForm extends javax.swing.JFrame {
 
-    Gestion gestion;
+    Partie partie;
     private static LancerForm lf;
     
     
     public LancerForm() {
-        gestion = Gestion.getInstance();
+        partie = Partie.getInstance();
         initComponents();
         lf = this;
     }
@@ -78,28 +78,24 @@ public class LancerForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(91, 91, 91)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(3, 3, 3)))
+                    .addComponent(btnLancer)
+                    .addComponent(jLabel3))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnLancer)
-                            .addComponent(jLabel1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(3, 3, 3)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                                .addComponent(jButton2)
-                                .addGap(75, 75, 75))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDe2)
-                                    .addComponent(txtDe1)
-                                    .addComponent(txtTotal))
-                                .addContainerGap(144, Short.MAX_VALUE))))))
+                            .addComponent(txtDe2)
+                            .addComponent(txtDe1)
+                            .addComponent(txtTotal))
+                        .addContainerGap(195, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,25 +105,25 @@ public class LancerForm extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtDe1))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(txtDe2))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtTotal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLancer)
                     .addComponent(jButton2))
-                .addGap(57, 57, 57))
+                .addGap(88, 88, 88))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLancerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLancerActionPerformed
-       gestion.lancerLesDes();
+       partie.lancerLesDes();
     }//GEN-LAST:event_btnLancerActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -147,6 +143,7 @@ public class LancerForm extends javax.swing.JFrame {
     public static LancerForm getForm(){
         return lf;
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLancer;

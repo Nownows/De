@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package jeude;
+package jeu.core;
 
 import java.util.Observable;
 

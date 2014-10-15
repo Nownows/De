@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jeude.controller;
+package jeu.core;
 
-import jeude.De;
-import jeude.Joueur;
-import jeude.ui.VueDe;
-import jeude.ui.VueJoueur;
+import jeu.persist.Joueur;
+import jeu.ui.LancerForm;
+import jeu.ui.MenuForm;
+import jeu.ui.VueDe;
+import jeu.ui.VueJoueur;
 
-public class Gestion {
+public class Partie {
 
     private De de1;
     private De de2;
@@ -22,11 +23,10 @@ public class Gestion {
     /**
      * Constructeur privé
      */
-    private Gestion() {
+    private Partie() {
         de1 = new De(1);
         de2 = new De(2);
-        j = new Joueur("toto",0);
-                
+        j = new Joueur("toto",0);               
         vj = new VueJoueur();
         j.addObserver(vj);
         vd1 = new VueDe();
@@ -35,11 +35,11 @@ public class Gestion {
         de2.addObserver(vd2);
     }
 
-    private static Gestion INSTANCE = null;
+    private static Partie INSTANCE = null;
 
-    public static synchronized Gestion getInstance() {
+    public static synchronized Partie getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new Gestion();
+            INSTANCE = new Partie();
         }
         return INSTANCE;
     }
@@ -47,5 +47,11 @@ public class Gestion {
     public void lancerLesDes(){
         de1.lancer();
         de2.lancer();          
+    }
+    
+    public static void main(String[] args) {
+        MenuForm mf = new MenuForm();
+        mf.setLocationRelativeTo(null);
+        mf.setVisible(true);
     }
 }

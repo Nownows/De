@@ -3,19 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package jeude.ui;
+package jeu.ui;
 
 import java.util.Observable;
 import java.util.Observer;
+import jeu.core.De;
 
-public class VueJoueur implements Observer{
+public class VueDe implements Observer {
+
+    
 
     @Override
     public void update(Observable o, Object arg) {
-       
-      
-        System.out.println("nouvelle valeur de joueur : "+arg.toString());
+    LancerForm lf = LancerForm.getForm();
+        if (((De) o).getId() == 1) {
+            lf.setValeurDe1((Integer) arg);
+        } else {
+            lf.setValeurDe2((Integer) arg);
+        }
+
     }
-    
+
 }
