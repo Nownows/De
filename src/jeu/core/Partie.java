@@ -13,6 +13,7 @@ import jeu.ui.VueJoueur;
 
 public class Partie {
 
+    private int nbTours = 10;
     private De de1;
     private De de2;
     private Joueur j;
@@ -44,9 +45,18 @@ public class Partie {
         return INSTANCE;
     }
     
-    public void lancerLesDes(){
+    public int lancerLesDes(){
+        if (nbTours == 0) {
+            return -1;
+        }
         de1.lancer();
-        de2.lancer();          
+        de2.lancer();    
+        nbTours--;
+        return 0;
+    }
+    
+    public Integer getNbTours(){
+        return nbTours;
     }
     
     public static void main(String[] args) {
