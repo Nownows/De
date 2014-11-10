@@ -21,7 +21,13 @@ public class Joueur extends Observable{
         this.score = score;
     }
     
-    public void display(){
-        
+    public String getNom(){
+        return this.nom;
+    }
+    
+    public void addScore(int score){
+        this.score += score;
+        setChanged();
+        notifyObservers(score);
     }
 }
