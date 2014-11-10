@@ -15,13 +15,8 @@ public class VueDe implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-    LancerForm lf = LancerForm.getForm();
-        if (((De) o).getId() == 1) {
-            lf.setValeurDe1((Integer) arg);
-        } else {
-            lf.setValeurDe2((Integer) arg);
-        }
-
+    LancerForm2 lf = LancerForm2.getForm();
+            lf.setScoreLancer(((De) o).getId(), (Integer) arg);
     }
 
 }

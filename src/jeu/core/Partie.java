@@ -6,7 +6,7 @@
 package jeu.core;
 
 import jeu.persist.Joueur;
-import jeu.ui.LancerForm;
+import jeu.ui.LancerForm2;
 import jeu.ui.MenuForm;
 import jeu.ui.VueDe;
 import jeu.ui.VueJoueur;
@@ -20,6 +20,7 @@ public class Partie {
     private VueJoueur vj;
     private VueDe vd1;
     private VueDe vd2;
+    private Joueur joueurActif;
 
     /**
      * Constructeur privé
@@ -45,14 +46,13 @@ public class Partie {
         return INSTANCE;
     }
     
-    public int lancerLesDes(){
+    public void lancerLesDes(){
         if (nbTours == 0) {
-            return -1;
+            return;
         }
         de1.lancer();
         de2.lancer();    
         nbTours--;
-        return 0;
     }
     
     public Integer getNbTours(){

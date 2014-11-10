@@ -31,6 +31,7 @@ public class MenuForm extends javax.swing.JFrame {
         btnRegles = new javax.swing.JButton();
         btnQuitter = new javax.swing.JButton();
         btnScores = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,7 +43,6 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         btnRegles.setText("Les règles");
-        btnRegles.setActionCommand("Les règles");
 
         btnQuitter.setText("Quitter");
         btnQuitter.addActionListener(new java.awt.event.ActionListener() {
@@ -52,6 +52,8 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         btnScores.setText("Les scores");
+
+        jButton1.setText("Options");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,6 +66,7 @@ public class MenuForm extends javax.swing.JFrame {
                         .addGap(162, 162, 162)
                         .addComponent(btnQuitter))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRegles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnJouer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnScores, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)))
@@ -78,7 +81,9 @@ public class MenuForm extends javax.swing.JFrame {
                 .addComponent(btnRegles)
                 .addGap(18, 18, 18)
                 .addComponent(btnScores)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(btnQuitter)
                 .addContainerGap())
         );
@@ -91,7 +96,7 @@ public class MenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuitterActionPerformed
 
     private void btnJouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJouerActionPerformed
-        LancerForm lf = new LancerForm();
+        LancerForm2 lf = new LancerForm2();
         this.setVisible(false);
         lf.setLocationRelativeTo(null);
         lf.setVisible(true);
@@ -102,5 +107,6 @@ public class MenuForm extends javax.swing.JFrame {
     private javax.swing.JButton btnQuitter;
     private javax.swing.JButton btnRegles;
     private javax.swing.JButton btnScores;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

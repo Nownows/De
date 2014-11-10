@@ -31,6 +31,7 @@
                       <Component id="btnQuitter" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnRegles" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnJouer" max="32767" attributes="0"/>
                       <Component id="btnScores" alignment="1" pref="86" max="32767" attributes="0"/>
@@ -49,7 +50,9 @@
               <Component id="btnRegles" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnScores" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="98" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
               <Component id="btnQuitter" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -68,7 +71,6 @@
     <Component class="javax.swing.JButton" name="btnRegles">
       <Properties>
         <Property name="text" type="java.lang.String" value="Les r&#xe8;gles"/>
-        <Property name="actionCommand" type="java.lang.String" value="Les r&#xe8;gles"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnQuitter">
@@ -82,6 +84,11 @@
     <Component class="javax.swing.JButton" name="btnScores">
       <Properties>
         <Property name="text" type="java.lang.String" value="Les scores"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Options"/>
       </Properties>
     </Component>
   </SubComponents>

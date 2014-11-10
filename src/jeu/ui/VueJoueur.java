@@ -13,8 +13,6 @@ public class VueJoueur implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-       
-      
         System.out.println("nouvelle valeur de joueur : "+arg.toString());
     }
     
