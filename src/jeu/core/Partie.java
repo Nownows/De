@@ -67,6 +67,10 @@ public class Partie extends Observable {
     public void marquerPoints(int score) {
         j.addScore(score);
     }
+    
+    public Joueur getJoueur(){
+        return this.j;
+    }
 
     /*
      Fonction tres utile de sauvegarde via un moyen aléatoire

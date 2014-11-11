@@ -201,10 +201,18 @@ public class LancerForm2 extends javax.swing.JFrame {
 
     private void btnRetourMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourMenuActionPerformed
         this.formSauvegarder();
+        MenuForm mf = new MenuForm();
+        mf.setVisible(true);
+        mf.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_btnRetourMenuActionPerformed
 
     private void btnRejouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejouerActionPerformed
         this.formSauvegarder();
+        LancerForm2 lf2 = new LancerForm2(partie.getJoueur().getNom());
+        lf2.setVisible(true);
+        lf2.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_btnRejouerActionPerformed
 
     public static LancerForm2 getForm() {
