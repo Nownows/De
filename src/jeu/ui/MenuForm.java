@@ -79,10 +79,10 @@ public class MenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuitterActionPerformed
 
     private void btnJouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJouerActionPerformed
-        LancerForm2 lf = new LancerForm2();
+        NouvellePartieForm np = new NouvellePartieForm();
         this.setVisible(false);
-        lf.setLocationRelativeTo(null);
-        lf.setVisible(true);
+        np.setLocationRelativeTo(null);
+        np.setVisible(true);
     }//GEN-LAST:event_btnJouerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

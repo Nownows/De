@@ -2,6 +2,7 @@ package jeu.ui;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import jeu.core.Partie;
 
@@ -10,13 +11,14 @@ public class LancerForm2 extends javax.swing.JFrame {
     Partie partie;
     private static LancerForm2 lf;
 
-    public LancerForm2() {
-        partie = Partie.getInstance();
+    public LancerForm2(String nomJoueur) {
+        partie = new Partie(nomJoueur);
         lf = this;
         initComponents();
-        this.lblJoueurActif.setText(partie.getJoueurActif().getNom());
         this.lblScore.setText("0");
         this.lblNbLancer.setText("10");
+        btnRejouer.setVisible(false);
+        btnRetourMenu.setVisible(false);
     }
 
     /**
@@ -28,13 +30,10 @@ public class LancerForm2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        lblJoueurActif = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblNbLancer = new javax.swing.JLabel();
         btnLancerDe = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btnChangerJoueur = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -43,13 +42,10 @@ public class LancerForm2 extends javax.swing.JFrame {
         txtDe2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         lblScore = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnRejouer = new javax.swing.JButton();
+        btnRetourMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Au tour du joueur : ");
-
-        lblJoueurActif.setText("jLabel2");
 
         jLabel3.setText("Lancés restants");
 
@@ -66,13 +62,6 @@ public class LancerForm2 extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        btnChangerJoueur.setText("Fin de tour");
-        btnChangerJoueur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangerJoueurActionPerformed(evt);
             }
         });
 
@@ -99,7 +88,7 @@ public class LancerForm2 extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblScore)
                 .addGap(19, 19, 19))
         );
@@ -111,10 +100,17 @@ public class LancerForm2 extends javax.swing.JFrame {
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRejouer.setText("Rejouer");
+        btnRejouer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRejouerActionPerformed(evt);
+            }
+        });
+
+        btnRetourMenu.setText("Retour au menu");
+        btnRetourMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetourMenuActionPerformed(evt);
             }
         });
 
@@ -125,62 +121,51 @@ public class LancerForm2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnLancerDe)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnChangerJoueur)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap(385, Short.MAX_VALUE)
+                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(84, 84, 84)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtDe1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel6))
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNbLancer)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblJoueurActif))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtDe1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel6))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtDe2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jButton1)))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNbLancer))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(txtDe2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(53, 53, 53))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnLancerDe)
+                                .addGap(71, 71, 71)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(btnRetourMenu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRejouer)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblJoueurActif)
                     .addComponent(jLabel3)
                     .addComponent(lblNbLancer))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -191,14 +176,14 @@ public class LancerForm2 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton1)
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLancerDe)
-                            .addComponent(btnChangerJoueur)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLancerDe))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRejouer)
+                    .addComponent(btnRetourMenu))
+                .addGap(7, 7, 7)
                 .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -210,17 +195,17 @@ public class LancerForm2 extends javax.swing.JFrame {
         partie.lancerLesDes();
     }//GEN-LAST:event_btnLancerDeActionPerformed
 
-    private void btnChangerJoueurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangerJoueurActionPerformed
-        partie.changerJoueurActif();
-    }//GEN-LAST:event_btnChangerJoueurActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        partie.sauvegarder();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnRetourMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourMenuActionPerformed
+        this.formSauvegarder();
+    }//GEN-LAST:event_btnRetourMenuActionPerformed
+
+    private void btnRejouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejouerActionPerformed
+        this.formSauvegarder();
+    }//GEN-LAST:event_btnRejouerActionPerformed
 
     public static LancerForm2 getForm() {
         return LancerForm2.lf;
@@ -229,41 +214,55 @@ public class LancerForm2 extends javax.swing.JFrame {
     public void setScore(Integer score) {
         this.lblScore.setText(score.toString());
     }
-    
-    public void setJoueurActif(String nom){
-        lblJoueurActif.setText(nom);
-    }
-    
-    public String getJoueurActif(){
-        return lblJoueurActif.getText();
-    }
 
     public void setScoreLancer(Integer id, Integer valeur) {
-       if (id == 1){
-           txtDe1.setText(valeur.toString());
-       }
-       else {
-           txtDe2.setText(valeur.toString());
-           Integer total = Integer.parseInt(txtDe1.getText()) + valeur;
-           txtTotal.setText(total.toString());
-       }
+        if (id == 1) {
+            txtDe1.setText(valeur.toString());
+        } else {
+            txtDe2.setText(valeur.toString());
+            Integer total = Integer.parseInt(txtDe1.getText()) + valeur;
+            txtTotal.setText(total.toString());
+        }
     }
-    
-    public void setNbLancer(Integer nb){
+
+    private void formSauvegarder() {
+        Object[] options = {"Oui",
+            "Non"};
+        int n = JOptionPane.showOptionDialog(this,
+                "Sauvegarder votre score ?",
+                "A Silly Question",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, //do not use a custom Icon
+                options, //the titles of buttons
+                options[0]); //default button title
+        if (n==0) {
+            partie.sauvegarder();
+        }     
+    }
+
+    public void setBtnLancerDesactiver() {
+        btnLancerDe.setEnabled(false);
+    }
+
+    public void setBtnFinPartie() {
+        btnRejouer.setVisible(true);
+        btnRetourMenu.setVisible(true);
+    }
+
+    public void setNbLancer(Integer nb) {
         lblNbLancer.setText(nb.toString());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnChangerJoueur;
     private javax.swing.JButton btnLancerDe;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRejouer;
+    private javax.swing.JButton btnRetourMenu;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblJoueurActif;
     private javax.swing.JLabel lblNbLancer;
     private javax.swing.JLabel lblScore;
     private javax.swing.JTextField txtDe1;
