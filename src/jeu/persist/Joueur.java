@@ -21,4 +21,8 @@ public class Joueur extends Observable{
         setChanged();
         notifyObservers(this.score);
     }
+    
+    public int getScore(){
+        return this.score;
+    }
 }

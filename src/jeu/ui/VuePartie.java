@@ -12,17 +12,17 @@ import jeu.core.Partie;
 
 public class VuePartie implements Observer {
     LancerForm2 lf;
-
-    public VuePartie() {
-        lf = LancerForm2.getForm();
-    }
-    
-    
+     
     @Override
     public void update(Observable o, Object arg) {
+        lf = LancerForm2.getForm();
         lf.setNbLancer((Integer)arg);
         Partie j = (Partie)o;
-        lf.setJoueurActif(j.getJoueurActif().getNom());
+        if (!lf.getJoueurActif().equals(j.getJoueurActif().getNom())){
+            lf.setJoueurActif(j.getJoueurActif().getNom());
+            lf.setScore(j.getJoueurActif().getScore());
+        }
+        
     }
 
 }

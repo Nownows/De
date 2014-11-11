@@ -11,13 +11,10 @@ import jeu.core.De;
 
 public class VueDe implements Observer {
     LancerForm2 lf;
-
-    public VueDe() {
-        lf = LancerForm2.getForm();
-    }
     
     @Override
     public void update(Observable o, Object arg) {
+        lf = LancerForm2.getForm();
         lf.setScoreLancer(((De) o).getId(), (Integer) arg);
     }
 

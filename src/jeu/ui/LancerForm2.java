@@ -204,12 +204,16 @@ public class LancerForm2 extends javax.swing.JFrame {
         return LancerForm2.lf;
     }
 
-    public void changerScore(Integer score) {
+    public void setScore(Integer score) {
         this.lblScore.setText(score.toString());
     }
     
     public void setJoueurActif(String nom){
         lblJoueurActif.setText(nom);
+    }
+    
+    public String getJoueurActif(){
+        return lblJoueurActif.getText();
     }
 
     public void setScoreLancer(Integer id, Integer valeur) {
