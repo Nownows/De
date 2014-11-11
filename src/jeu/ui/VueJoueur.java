@@ -10,10 +10,13 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class VueJoueur implements Observer{
+    LancerForm2 lf;
 
+    public VueJoueur() {
+        lf = LancerForm2.getForm();
+    }
     @Override
     public void update(Observable o, Object arg) {
-         LancerForm2 lf = LancerForm2.getForm();
          lf.changerScore((int) arg);
     }
     

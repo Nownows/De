@@ -7,18 +7,22 @@ package jeu.ui;
 
 import java.util.Observable;
 import java.util.Observer;
-import jeu.core.De;
+import jeu.core.Partie;
 
-public class VueDe implements Observer {
+
+public class VuePartie implements Observer {
     LancerForm2 lf;
 
-    public VueDe() {
+    public VuePartie() {
         lf = LancerForm2.getForm();
     }
     
+    
     @Override
     public void update(Observable o, Object arg) {
-        lf.setScoreLancer(((De) o).getId(), (Integer) arg);
+        lf.setNbLancer((Integer)arg);
+        Partie j = (Partie)o;
+        lf.setJoueurActif(j.getJoueurActif().getNom());
     }
 
 }

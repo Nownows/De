@@ -5,24 +5,22 @@
  */
 package jeu.core;
 
+import java.util.Observable;
 import jeu.persist.Joueur;
 import jeu.ui.LancerForm2;
 import jeu.ui.MenuForm;
 import jeu.ui.VueDe;
 import jeu.ui.VueJoueur;
+import jeu.ui.VuePartie;
 
-public class Partie {
-
+public class Partie extends Observable{
+    private final int NB_TOURS = 10;
     private int nbTours = 10;
-    private De de1;
-    private De de2;
-    private Joueur j1;
-    private Joueur j2;
-    private VueJoueur vj1;
-    private VueJoueur vj2;
-    private VueDe vd1;
-    private VueDe vd2;
-    private Joueur joueurActif;
+    private De de1,de2;
+    private Joueur j1,j2,joueurActif;
+    private VueJoueur vj1,vj2;
+    private VueDe vd1,vd2;
+    private VuePartie vp;
 
     /**
      * Constructeur privé
@@ -42,6 +40,9 @@ public class Partie {
         vd2 = new VueDe();
         de2.addObserver(vd2);
         this.joueurActif = j1;
+        vp = new VuePartie();
+        this.addObserver(vp);
+        
     }
 
     private static Partie INSTANCE = null;
@@ -57,9 +58,14 @@ public class Partie {
         if (nbTours == 0) {
             return;
         }
-        de1.lancer();
-        de2.lancer();    
+        int v1 = de1.lancer();
+        int v2 = de2.lancer(); 
+        if (v1+v2 == 10){
+            marquerPoints(10);
+        }
         nbTours--;
+        setChanged();
+        notifyObservers(nbTours);
     }
     
     public Integer getNbTours(){
@@ -81,6 +87,9 @@ public class Partie {
         else {
             joueurActif = j1;
         }
+        nbTours = NB_TOURS;
+        setChanged();
+        notifyObservers(NB_TOURS);
     }
     
     public static void main(String[] args) {
