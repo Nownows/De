@@ -11,8 +11,8 @@ public class LancerForm2 extends javax.swing.JFrame {
     Partie partie;
     private static LancerForm2 lf;
 
-    public LancerForm2(String nomJoueur) {
-        partie = new Partie(nomJoueur);
+    public LancerForm2(Partie p) {
+        partie = p;
         lf = this;
         initComponents();
         this.lblScore.setText("0");
@@ -74,8 +74,10 @@ public class LancerForm2 extends javax.swing.JFrame {
 
         txtTotal.setEnabled(false);
 
+        txtDe1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtDe1.setEnabled(false);
 
+        txtDe2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtDe2.setEnabled(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Score"));
@@ -209,7 +211,7 @@ public class LancerForm2 extends javax.swing.JFrame {
 
     private void btnRejouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejouerActionPerformed
         this.formSauvegarder();
-        LancerForm2 lf2 = new LancerForm2(partie.getJoueur().getNom());
+        LancerForm2 lf2 = new LancerForm2(new Partie(this.partie.getJoueur().getNom()));
         lf2.setVisible(true);
         lf2.setLocationRelativeTo(null);
         this.setVisible(false);
@@ -228,7 +230,9 @@ public class LancerForm2 extends javax.swing.JFrame {
             txtDe1.setText(valeur.toString());
         } else {
             txtDe2.setText(valeur.toString());
-            Integer total = Integer.parseInt(txtDe1.getText()) + valeur;
+        }
+        if (!txtDe1.getText().equals("") && !txtDe2.getText().equals("")) {
+            Integer total = Integer.parseInt(txtDe1.getText()) + Integer.parseInt(txtDe2.getText());
             txtTotal.setText(total.toString());
         }
     }
@@ -252,10 +256,21 @@ public class LancerForm2 extends javax.swing.JFrame {
     public void setBtnLancerDesactiver() {
         btnLancerDe.setEnabled(false);
     }
+    
+    public void setBtnLancerActiver() {
+        btnLancerDe.setEnabled(true);
+    }
 
     public void setBtnFinPartie() {
         btnRejouer.setVisible(true);
         btnRetourMenu.setVisible(true);
+    }
+    
+    public void effacerDes(){
+        txtDe1.setText("");
+        txtDe2.setText("");
+        txtTotal.setText("");
+        
     }
 
     public void setNbLancer(Integer nb) {

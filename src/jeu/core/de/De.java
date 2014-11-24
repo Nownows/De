@@ -1,6 +1,7 @@
-package jeu.core;
+package jeu.core.de;
 
 import java.util.Observable;
+import jeu.core.Randomizer;
 
 public class De extends Observable{
     int valeurFace;

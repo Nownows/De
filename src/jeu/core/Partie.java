@@ -5,43 +5,41 @@
  */
 package jeu.core;
 
+import jeu.core.de.De;
 import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
+import jeu.core.de.DeDeuxPuisUn;
+import jeu.core.de.DeSimultanes;
+import jeu.core.de.DeUnPuisDeux;
+import jeu.core.de.Des;
+import jeu.core.de.Strategie;
 import jeu.persist.Joueur;
+import jeu.persist.Score;
+import jeu.persist.Scores;
 import jeu.persist.factory.JdbcKit;
 import jeu.persist.factory.PersistKit;
 import jeu.persist.factory.SrKit;
 import jeu.persist.factory.XmlKit;
 import jeu.persist.scores.HighScore;
 import jeu.ui.MenuForm;
-import jeu.ui.VueDe;
 import jeu.ui.VueJoueur;
 import jeu.ui.VuePartie;
 
 public class Partie extends Observable {
 
-    private final int NB_MANCHES = 3;
-    private final int NB_TOURS = 10;
     private int nbTours = 10;
-    private De de1, de2;
+    private Des des;
     private Joueur j;
     private VueJoueur vj;
-    private VueDe vd1, vd2;
     private VuePartie vp;
 
-    /**
-     * Constructeur privé
-     */
     public Partie(String nomJoueur) {
-        de1 = new De(1);
-        de2 = new De(2);
+        des = new Des();
+        des.setSt(randomStrategie());
         j = new Joueur(nomJoueur, 0);
         vj = new VueJoueur();
         j.addObserver(vj);
-        vd1 = new VueDe();
-        de1.addObserver(vd1);
-        vd2 = new VueDe();
-        de2.addObserver(vd2);
         vp = new VuePartie();
         this.addObserver(vp);
     }
@@ -50,11 +48,12 @@ public class Partie extends Observable {
         if (nbTours == 0) {
             return;
         }
-        int v1 = de1.lancer();
-        int v2 = de2.lancer();
-        if (v1 + v2 == 10) {
-            marquerPoints(10);
+
+        int score = des.lancerDes();
+        if (score == 10){
+            marquerPoints(score);
         }
+
         nbTours--;
         setChanged();
         notifyObservers(nbTours);
@@ -67,8 +66,8 @@ public class Partie extends Observable {
     public void marquerPoints(int score) {
         j.addScore(score);
     }
-    
-    public Joueur getJoueur(){
+
+    public Joueur getJoueur() {
         return this.j;
     }
 
@@ -77,6 +76,8 @@ public class Partie extends Observable {
      ce qui fait qu'on ne pourra pas lister les scores.
      */
     public void sauvegarder() {
+        Scores lesScores = Scores.getInstance();
+        lesScores.ajouterScore(new Score(j, j.getScore()));
         PersistKit pk;
         HighScore highscore;
 
@@ -94,9 +95,34 @@ public class Partie extends Observable {
 
     }
 
+    private Strategie randomStrategie() {
+        Strategie st;
+        Random r = new Random();
+        int alea = r.nextInt(300);
+        if (alea <= 100) {
+            st = new DeDeuxPuisUn();
+            System.out.println("de 2 puis 1");
+        } else if (alea > 100 && alea <= 200) {
+            st = new DeUnPuisDeux();
+            System.out.println("de 1 puis 2");
+        } else {
+            st = new DeSimultanes();
+            System.out.println("de 1 et 2");
+        }
+        return st;
+    }
+
     public static void main(String[] args) {
         MenuForm mf = new MenuForm();
         mf.setLocationRelativeTo(null);
         mf.setVisible(true);
+    }
+    
+    public Partie getPartie(){
+        return this;
+    }
+    
+    public Partie resetPartie(){
+        return (new Partie(this.j.getNom()));
     }
 }

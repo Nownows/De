@@ -7,7 +7,7 @@ package jeu.ui;
 
 import java.util.Observable;
 import java.util.Observer;
-import jeu.core.De;
+import jeu.core.de.De;
 
 public class VueDe implements Observer {
     LancerForm2 lf;

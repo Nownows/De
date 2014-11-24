@@ -6,6 +6,7 @@
 package jeu.ui;
 
 import javax.swing.JOptionPane;
+import jeu.core.Partie;
 
 /**
  *
@@ -98,10 +99,12 @@ public class NouvellePartieForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Nom obligatoire", "Erreur",
                     JOptionPane.ERROR_MESSAGE);
         } else {
-            LancerForm2 lf = new LancerForm2(txtNom.getText());
+            Partie p = new Partie(txtNom.getText());
+            LancerForm2 lf = new LancerForm2(p);
             lf.setVisible(true);
             lf.setLocationRelativeTo(null);
             this.setVisible(false);
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -15,7 +15,7 @@ public class VueJoueur implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         lf = LancerForm2.getForm();
-         lf.setScore((int) arg);
+        lf.setScore((int) arg);
     }
     
 }
