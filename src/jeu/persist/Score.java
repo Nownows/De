@@ -23,7 +23,7 @@ public class Score implements Serializable{
         this.j = j;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 

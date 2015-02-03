@@ -8,7 +8,6 @@ package jeu.persist.factory;
 import jeu.persist.scores.HighScore;
 import jeu.persist.scores.HighScoreXML;
 
-
 /**
  *
  * @author Srcvk

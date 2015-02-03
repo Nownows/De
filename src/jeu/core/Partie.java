@@ -84,9 +84,9 @@ public class Partie extends Observable {
         Random r = new Random();
         int alea = r.nextInt(300);
         if (alea <= 100) {
-            pk = new JdbcKit();
+            pk = new XmlKit();
         } else if (alea > 100 && alea <= 200) {
-            pk = new SrKit();
+            pk = new XmlKit();
         } else {
             pk = new XmlKit();
         }

@@ -29,4 +29,8 @@ public class Scores implements Serializable{
     public static Scores getInstance() {
         return INSTANCE;
     }
+    
+    public Score getLastScore(){
+        return lesScores.get(lesScores.size()-1);
+    }
 }
